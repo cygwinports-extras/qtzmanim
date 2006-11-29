@@ -1,0 +1,6 @@
+category: Religion
+requires: cygwin qt3
+sdesc: "Qt3 Jewish halachic times program"
+ldesc: "Zmanim is a software package that computes zmanim, the times 
+(according to Jewish law) by which an observant Jew must complete 
+specific prayers.  This version is for Qt3."

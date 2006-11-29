@@ -1,0 +1,83 @@
+qtzmanim
+-------------------------------------------
+Zmanim is a software package for QT3 that computes zmanim, the times 
+(according to Jewish law) by which an observant Jew must complete specific 
+prayers.
+
+NOTE:
+You *must* copy the included sample.zmanrc to $HOME/.zmanrc _AND_ add 
+your local latitude/longitude information for the program to work 
+correctly.  qtzmanim uses the same .zmanrc file as the zmanim package 
+(command line version).
+
+This is provided as a reference only.  Halachic decisions/questions 
+based on this information should be directed to a qualified orthodox 
+rabbi.
+
+Runtime requirements:
+  cygwin-1.5.22-1
+  qt3-3.3.6-1
+
+Build requirements:
+  cygwin-1.5.22-1
+  binutils-20060817-1
+  cygport-0.2.6-1
+  gcc-core-3.4.4-1
+  gcc-g++-3.4.4.-1
+  make-3.81-1
+  qt3-devel-3.3.6-1
+
+Canonical homepage:
+  http://sourceforge.net/projects/zmanim/
+
+Canonical download:
+  http://prdownloads.sourceforge.net/zmanim/
+
+-------------------------------------------
+
+Build instructions:
+  unpack qtzmanim-1.1-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./qtzmanim-1.1-X.cygport all
+
+This will create:
+  /usr/src/qtzmanim-1.1-X-src.tar.bz2
+  /usr/src/qtzmanim-1.1-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /usr/bin/qtzmanim.exe
+  /usr/share/doc/Cygwin/qtzmanim-1.1.README
+  /usr/share/doc/qtzmanim-1.1/ChangeLog
+  /usr/share/doc/qtzmanim-1.1/COPYING
+  /usr/share/doc/qtzmanim-1.1/GPL
+  /usr/share/doc/qtzmanim-1.1/sample.zmanrc
+  /usr/share/man/man1/qtzmanim.1.gz
+
+------------------
+
+Port Notes:
+
+----- version 1.1-1 -----
+Major version bump.
+The .zmanrc format has changed with 1.1; be sure to update!!
+
+----- version 1.0.10-2 -----
+Rebuilt with gcc-3.4.
+
+----- version 1.0.10-1 -----
+Version bump.
+
+----- version 1.0.7-1 -----
+Upstream bugfix release.
+
+----- version 1.0.4-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/
