@@ -1,0 +1,184 @@
+--- origsrc/qtzmanim-1.1/conf_file.cpp	2006-09-01 14:56:11.000000000 -0500
++++ src/qtzmanim-1.1/conf_file.cpp	2008-07-24 19:23:08.046875000 -0500
+@@ -16,35 +16,36 @@
+ */
+ #include "conf_file.h"
+ #include <cstdlib>
+-#include <qstringlist.h>
+-#include <qtextstream.h>
+-#include <qfile.h>
++#include <QFile>
++#include <QStringList>
++#include <QTextStream>
++#include <Q3ValueList>
+ 
+-QStringList names(QValueList<location> const & names)
++QStringList names(Q3ValueList<location> const & names)
+ {
+     QStringList retval;
+     
+-    for (QValueList<location>::const_iterator i=names.begin();i!=names.end();++i)
++    for (Q3ValueList<location>::const_iterator i=names.begin();i!=names.end();++i)
+     {
+         retval+=(*i).name;
+     }
+     return retval;
+ }
+ 
+-QValueList<location> parseconfigfile()
++Q3ValueList<location> parseconfigfile()
+ {
+-    QValueList<location> retval;
++    Q3ValueList<location> retval;
+     QString filename(std::getenv("HOME")); filename+="/.zmanrc";
+     QFile tmp(filename);
+-    tmp.open(IO_ReadOnly);
++    tmp.open(QIODevice::ReadOnly);
+     QTextStream infile(&tmp);
+     QString line;
+-    while((line=infile.readLine())!=NULL)
++    while(!(line=infile.readLine()).isNull())
+     {
+-        line=line.simplifyWhiteSpace();
++        line=line.simplified();
+         if(line.length()>0 && !line.startsWith("#"))
+         {
+-            QStringList linetokenized=QStringList::split(" ",line);
++            QStringList linetokenized=line.split(" ");
+             location result;
+             if (linetokenized[0]=="default") linetokenized.pop_front();
+             result.name=linetokenized[0];
+--- origsrc/qtzmanim-1.1/conf_file.h	2006-09-01 14:56:11.000000000 -0500
++++ src/qtzmanim-1.1/conf_file.h	2008-07-24 19:20:24.203125000 -0500
+@@ -16,9 +16,9 @@
+ */
+ #ifndef CONF_FILE_H
+ #define CONF_FILE_H
+-#include <qstring.h>
+-#include <qstringlist.h>
+-#include <qvaluelist.h>
++#include <QString>
++#include <QStringList>
++#include <Q3ValueList>
+ 
+ struct location{
+     QString name;
+@@ -27,7 +27,7 @@
+     QString tzname;
+ };
+ 
+-QValueList<location> parseconfigfile();
+-QStringList names(QValueList<location> const & names);
++Q3ValueList<location> parseconfigfile();
++QStringList names(Q3ValueList<location> const & names);
+ 
+ #endif
+--- origsrc/qtzmanim-1.1/main.cpp	2004-11-18 16:54:31.000000000 -0600
++++ src/qtzmanim-1.1/main.cpp	2008-07-24 19:20:24.203125000 -0500
+@@ -14,7 +14,7 @@
+     along with Zmanim; if not, write to the Free Software
+     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+-#include <qapplication.h>
++#include <QApplication>
+ #include "mainform.h"
+ 
+ int main( int argc, char ** argv )
+--- origsrc/qtzmanim-1.1/mainform.ui.h	2006-09-01 15:16:40.000000000 -0500
++++ src/qtzmanim-1.1/mainform.ui.h	2008-07-24 19:20:24.218750000 -0500
+@@ -44,26 +44,26 @@
+     listView2->addColumn("Time");
+     
+     display.resize(17);
+-    yesterday=new QListViewItem(listView2,"Yesterday");
++    yesterday=new Q3ListViewItem(listView2,"Yesterday");
+     display.insert(0,yesterday);
+-    today=new QListViewItem(listView2,yesterday,"Today");
++    today=new Q3ListViewItem(listView2,yesterday,"Today");
+     display.insert(4,today);
+     //these sort in the reverse of their insertion order
+-    display.insert(16,new QListViewItem(today,"Nightfall","0:00"));
+-    display.insert(15,new QListViewItem(today,"Sunset","0:00"));
+-    display.insert(14,new QListViewItem(today,"Candle Lighting","0:00"));
+-    display.insert(13,new QListViewItem(today,"Plag HaMincha","0:00"));
+-    display.insert(12,new QListViewItem(today,"Mincha Katanah","0:00"));
+-    display.insert(11,new QListViewItem(today,"Mincha Gedola","0:00"));
+-    display.insert(10,new QListViewItem(today,"Midday","0:00"));
+-    display.insert(9,new QListViewItem(today,"Latest Amidah","0:00"));
+-    display.insert(8,new QListViewItem(today,"Latest Sh'ma","0:00"));
+-    display.insert(7,new QListViewItem(today,"Sunrise","0:00"));
+-    display.insert(6,new QListViewItem(today,"Earliset Talit","0:00"));
+-    display.insert(5,new QListViewItem(today,"Daybreak","0:00"));
+-    display.insert(3,new QListViewItem(yesterday,"Nightfall","0:00"));
+-    display.insert(2,new QListViewItem(yesterday,"Sunset","0:00"));
+-    display.insert(1,new QListViewItem(yesterday,"Candle Lighting","0:00"));
++    display.insert(16,new Q3ListViewItem(today,"Nightfall","0:00"));
++    display.insert(15,new Q3ListViewItem(today,"Sunset","0:00"));
++    display.insert(14,new Q3ListViewItem(today,"Candle Lighting","0:00"));
++    display.insert(13,new Q3ListViewItem(today,"Plag HaMincha","0:00"));
++    display.insert(12,new Q3ListViewItem(today,"Mincha Katanah","0:00"));
++    display.insert(11,new Q3ListViewItem(today,"Mincha Gedola","0:00"));
++    display.insert(10,new Q3ListViewItem(today,"Midday","0:00"));
++    display.insert(9,new Q3ListViewItem(today,"Latest Amidah","0:00"));
++    display.insert(8,new Q3ListViewItem(today,"Latest Sh'ma","0:00"));
++    display.insert(7,new Q3ListViewItem(today,"Sunrise","0:00"));
++    display.insert(6,new Q3ListViewItem(today,"Earliset Talit","0:00"));
++    display.insert(5,new Q3ListViewItem(today,"Daybreak","0:00"));
++    display.insert(3,new Q3ListViewItem(yesterday,"Nightfall","0:00"));
++    display.insert(2,new Q3ListViewItem(yesterday,"Sunset","0:00"));
++    display.insert(1,new Q3ListViewItem(yesterday,"Candle Lighting","0:00"));
+     listView2->setOpen(today,true);
+     listView2->setOpen(yesterday,true);
+     
+--- origsrc/qtzmanim-1.1/qtzmanim.pro	2004-11-18 16:54:31.000000000 -0600
++++ src/qtzmanim-1.1/qtzmanim.pro	2008-07-24 19:20:24.234375000 -0500
+@@ -1,9 +1,6 @@
+ TEMPLATE	= app
+-LANGUAGE	= C++
+-
+-CONFIG	+= qt thread warn_on debug
+-
+-INCLUDEPATH	+= /usr/include/qt
++CONFIG	+= qt thread warn_on debug uic3
++QT +=  qt3support 
+ 
+ HEADERS	+= sunfuncs.h \
+ 	conf_file.h
+@@ -12,20 +9,14 @@
+ 	sunfuncs.cpp \
+ 	conf_file.cpp
+ 
+-FORMS	= mainform.ui \
++FORMS3	= mainform.ui \
+ 	mydialog.ui
+ 
+ unix {
+-  UI_DIR = .ui
+-  MOC_DIR = .moc
+-  OBJECTS_DIR = .obj
+-}
+-
+-unix {
+-  documentation.path = $(PREFIX)/share/doc/qtzmanim
++  documentation.path = /usr/share/doc/qtzmanim
+   documentation.files+=sample.zmanrc
+-  manpages.path = $(PREFIX)/share/man/man1
++  manpages.path = /usr/share/man/man1
+   manpages.files+=qtzmanim.1
+-  target.path = $(PREFIX)/bin
++  target.path = /usr/bin
+   INSTALLS += documentation manpages target
+ }
+--- origsrc/qtzmanim-1.1/sunfuncs.h	2006-09-01 14:56:11.000000000 -0500
++++ src/qtzmanim-1.1/sunfuncs.h	2008-07-24 19:24:17.421875000 -0500
+@@ -16,7 +16,9 @@
+ */
+ #ifndef SUNFUNCS_H
+ #define SUNFUNCS_H
+-#include <qdatetime.h>
++#include <QDate>
++#include <QString>
++#include <QTime>
+ #include <cassert>
+ 
+ 

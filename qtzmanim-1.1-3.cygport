@@ -1,0 +1,12 @@
+inherit qt4-qmake
+
+DESCRIPTION="Qt3 Jewish halachic times calculator"
+HOMEPAGE="http://zmanim.sourceforge.net/"
+SRC_URI="mirror://sourceforge/zmanim/${PN}_${PV}.orig.tar.gz"
+PATCH_URI="
+	1.1-chabad.patch
+	1.1-qt3to4.patch
+	1.1-sample-install.patch
+"
+
+DIFF_EXCLUDES="Makefile"

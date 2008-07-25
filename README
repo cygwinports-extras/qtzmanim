@@ -1,6 +1,6 @@
 qtzmanim
 -------------------------------------------
-Zmanim is a software package for QT3 that computes zmanim, the times 
+Zmanim is a software package for Qt that computes zmanim, the times 
 (according to Jewish law) by which an observant Jew must complete specific 
 prayers.
 
@@ -15,23 +15,24 @@ based on this information should be directed to a qualified orthodox
 rabbi.
 
 Runtime requirements:
-  cygwin-1.5.22-1
-  qt3-3.3.6-1
+  cygwin-1.5.25-15
+  libQt3Support4-4.4.0-1
+  libQtCore4-4.4.0-1
+  libQtGui4-4.4.0-1
 
 Build requirements:
-  cygwin-1.5.22-1
-  binutils-20060817-1
-  cygport-0.2.6-1
-  gcc-core-3.4.4-1
-  gcc-g++-3.4.4.-1
+(besides corresponding devel packages)
+  binutils-20080523-2
+  cygport-0.3.13-1
+  gcc-core-3.4.4-3
+  gcc-g++-3.4.4-3
   make-3.81-1
-  qt3-devel-3.3.6-1
 
 Canonical homepage:
   http://sourceforge.net/projects/zmanim/
 
 Canonical download:
-  http://prdownloads.sourceforge.net/zmanim/
+  http://downloads.sourceforge.net/zmanim/
 
 -------------------------------------------
 
@@ -51,7 +52,6 @@ This will create:
 Files included in the binary package:
 
   /usr/bin/qtzmanim.exe
-  /usr/share/doc/Cygwin/qtzmanim-1.1.README
   /usr/share/doc/qtzmanim-1.1/ChangeLog
   /usr/share/doc/qtzmanim-1.1/COPYING
   /usr/share/doc/qtzmanim-1.1/GPL
@@ -61,6 +61,12 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 1.1-3 -----
+Ported to Qt4.
+
+----- version 1.1-2 -----
+Added patch for Tzeit Hakochavim according to Siddur HaRav.
 
 ----- version 1.1-1 -----
 Major version bump.

@@ -1,6 +1,6 @@
-category: Religion
-requires: cygwin qt3
-sdesc: "Qt3 Jewish halachic times program"
+category: Religion KDE
+requires: cygwin libQt3Support4 libQtCore4 libQtGui4
+sdesc: "Qt Jewish halachic times program"
 ldesc: "Zmanim is a software package that computes zmanim, the times 
 (according to Jewish law) by which an observant Jew must complete 
-specific prayers.  This version is for Qt3."
+specific prayers.  This version is for Qt."
