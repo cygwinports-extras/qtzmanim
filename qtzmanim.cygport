@@ -1,0 +1,16 @@
+inherit qt4-qmake
+
+NAME="qtzmanim"
+VERSION=1.1
+RELEASE=10
+CATEGORY="Religion"
+SUMMARY="Qt Jewish halachic times program"
+DESCRIPTION="Zmanim is a software package that computes zmanim, the times
+(according to Jewish law) by which an observant Jew must complete specific
+prayers.  This version is for Qt."
+HOMEPAGE="http://zmanim.sourceforge.net/"
+SRC_URI="mirror://sourceforge/zmanim/qtzmanim_${VERSION}.orig.tar.gz"
+PATCH_URI="1.1-chabad.patch
+           1.1-qt3to4.patch"
+
+DISTCLEANFILES="Makefile"
